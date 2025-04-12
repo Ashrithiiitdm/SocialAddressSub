@@ -5,6 +5,7 @@ const applicationSchema = new mongoose.Schema({
 	student_id: {
 		type: String,
 		required: true,
+		
 	},
 	name: String,
 	email: String,

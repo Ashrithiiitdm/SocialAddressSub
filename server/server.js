@@ -7,7 +7,6 @@ import { connectCloudinary } from "./middleware/cloudinary.js";
 import studentRouter from "./routes/student.js";
 import recruiterRouter from "./routes/recruiter.js";
 
-
 const app = express();
 
 connectDB();
@@ -18,6 +17,7 @@ app.use(
 	cors({
 		origin: process.env.FRONTEND_URL,
 		methods: ["GET", "POST", "PUT", "DELETE"],
+		credentials: true,
 	})
 );
 
@@ -25,8 +25,8 @@ app.get("/", (req, res) => {
 	res.send("Hello world");
 });
 
-app.use('/api/students', studentRouter);
-app.use('/api/recruiters', recruiterRouter);
+app.use("/api/students", studentRouter);
+app.use("/api/recruiters", recruiterRouter);
 
 app.listen(port, () => {
 	console.log("Server is listening at port ", port);

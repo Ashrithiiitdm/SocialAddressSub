@@ -27,11 +27,11 @@ const LoginForm = ({ role }) => {
 		try {
 			const endpoint = isLogin
 				? role === "student"
-					? "/api/student-login" // API for student login
-					: "/api/recruiter-login" // API for recruiter login
+					? "/api/students/student-login" // API for student login
+					: "/api/recruiters/recruiter-login" // API for recruiter login
 				: role === "student"
-				? "/api/student-register" // API for student register
-				: "/api/recruiter-register"; // API for recruiter register
+				? "/api/students/student-register" // API for student register
+				: "/api/recruiters/recruiter-register"; // API for recruiter register
 
 			const payload = isLogin ? { email, password } : { name, email, password };
 

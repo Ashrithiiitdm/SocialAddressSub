@@ -1,15 +1,19 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom"; // Import BrowserRouter
+import { BrowserRouter, Routes, Route } from "react-router-dom"; // Import BrowserRouter, Routes, and Route
 import LoginForm from "./pages/Login.jsx";
+import RoleSelector from "./pages/RoleSelector.jsx";
+import ApplicantDashboard from "./pages/ApplicantDashboard.jsx";
+import EmployerDashboard from "./pages/EmployerDashboard.jsx";
 
 function App() {
 	return (
 		<BrowserRouter>
-			{" "}
-			{/* Wrap the app with BrowserRouter */}
-			<div className="min-h-screen bg-gray-50 flex items-center justify-center">
-				<LoginForm />
-			</div>
+			<Routes>
+				<Route path="/" element={<RoleSelector />} />
+				<Route path="/login" element={<LoginForm />} />
+				<Route path="/applicant-dashboard" element={<ApplicantDashboard />} />
+				<Route path="/employer-dashboard" element={<EmployerDashboard />} />
+			</Routes>
 		</BrowserRouter>
 	);
 }

@@ -3,6 +3,7 @@ import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Internships } from "../models/internship.js";
+import { v4 as uuidv4 } from "uuid";
 
 export const signToken = async (id) => {
 	return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -35,8 +36,9 @@ export const studentRegister = async (req, res) => {
 		}
 
 		const hashedPassword = await bcrypt.hash(password, 10);
-
+		const student_id = String(uuidv4());
 		const student = await Students.create({
+			student_id,
 			name: name,
 			email: email,
 			password: hashedPassword,
